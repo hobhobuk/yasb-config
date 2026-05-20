@@ -1353,3 +1353,6 @@
     color: rgb(255, 255, 255);
     background-color: rgb(226, 0, 0);
 }
+.win-button-widget .label {
+	font: var(--icons-font-fallback);
+}

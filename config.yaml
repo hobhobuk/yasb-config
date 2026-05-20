@@ -1,4 +1,3 @@
-# YASB Config https://github.com/amnweb/yasb/wiki
 watch_stylesheet: true
 watch_config: true
 debug: false
@@ -34,6 +33,7 @@ bars:
       right: 4
     widgets:
       left:
+      - win_button
       - home
       - quick_launch
       - komorebi_workspaces
@@ -417,3 +417,11 @@ widgets:
         processes: []
         titles: []
         classes: []
+  win_button:
+    type: "yasb.custom.CustomWidget"
+    options:
+      label: "\ue62a"
+      label_alt: "\ue62a"
+      class_name: "win-button-widget"
+      callbacks:
+        on_left: "exec start_menu"
