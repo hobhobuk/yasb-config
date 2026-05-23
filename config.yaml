@@ -5,7 +5,9 @@ update_check: true
 bars:
   primary-bar:
     enabled: true
-    screens: ['*']
+    screens:
+    - XG27ACS
+    - MSI MD272UPS
     class_name: yasb-bar
     alignment:
       position: top
@@ -375,7 +377,7 @@ widgets:
         show_volume_slider: true
       scrolling_label:
         enabled: true
-        style: bounce
+        style: left
         update_interval_ms: 40
   bin:
     type: "yasb.recycle_bin.RecycleBinWidget"
