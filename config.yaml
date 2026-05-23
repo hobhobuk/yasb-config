@@ -5,9 +5,6 @@ update_check: true
 bars:
   primary-bar:
     enabled: true
-    screens:
-    - XG27ACS
-    - MSI MD272UPS
     class_name: yasb-bar
     alignment:
       position: top
