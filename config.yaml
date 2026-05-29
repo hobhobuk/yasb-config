@@ -2,6 +2,10 @@ watch_stylesheet: true
 watch_config: true
 debug: false
 update_check: true
+komorebi:
+  start_command: "komorebic start --whkd"
+  stop_command: "komorebic stop --whkd"
+  reload_command: "komorebic reload-configuration"
 bars:
   primary-bar:
     enabled: true
@@ -34,6 +38,7 @@ bars:
       - home
       - quick_launch
       - komorebi_workspaces
+      - komorebi_active_layout
       - active_window
       center:
       - clock
@@ -166,15 +171,49 @@ widgets:
         - ''
         - Cancel
   komorebi_workspaces:
-    type: komorebi.workspaces.WorkspaceWidget
-    options:
-      label_workspace_btn: '{name}'
-      label_workspace_active_btn: '{name}'
-      label_workspace_populated_btn: '{name}'
-      label_default_name: '{name}'
-      label_zero_index: false
-      hide_empty_workspaces: false
-      hide_if_offline: true
+      type: "komorebi.workspaces.WorkspaceWidget"
+      options:
+          label_offline: "\u26a1 Offline"
+          label_workspace_btn: "\udb81\udc3d"
+          label_workspace_active_btn: "\udb81\udc3e"
+          label_workspace_populated_btn: "\udb81\udc3e"
+          label_default_name: "{index}"
+          label_zero_index: false
+          hide_empty_workspaces: false
+          hide_if_offline: false
+          container_padding: 
+            top: 0
+            left: 8
+            bottom: 0
+            right: 8
+  komorebi_active_layout:
+      type: "komorebi.active_layout.ActiveLayoutWidget"
+      options:
+        hide_if_offline: true
+        label: "{icon}"
+        layouts: ['bsp', 'columns', 'rows', 'grid', 'vertical_stack', 'horizontal_stack', 'ultrawide_vertical_stack','right_main_vertical_stack']
+        layout_icons:
+          bsp: "BSP"
+          columns: "COLS"
+          rows: "ROWS"
+          grid: "GRID"
+          vertical_stack: "V-STACK"
+          horizontal_stack: "H-STACK"
+          ultrawide_vertical_stack: "W-STACK"
+          right_main_vertical_stack: "RMV-STACK"
+          monocle: "MONOCLE"
+          maximised: "MAX"
+          floating: "FLOATING"
+          paused: "PAUSED"
+        callbacks:
+          on_left: 'next_layout'
+          on_middle: 'toggle_monocle'
+          on_right: 'prev_layout'
+        container_padding: 
+          top: 0
+          left: 8
+          bottom: 0
+          right: 8
   cpu:
     type: yasb.cpu.CpuWidget
     options:
