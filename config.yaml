@@ -2,17 +2,15 @@ watch_stylesheet: true
 watch_config: true
 debug: false
 update_check: true
-komorebi:
-  start_command: "komorebic start --whkd"
-  stop_command: "komorebic stop --whkd"
-  reload_command: "komorebic reload-configuration"
 bars:
   primary-bar:
     enabled: true
+    screens:
+      - primary
     class_name: yasb-bar
     alignment:
       position: top
-      center: true
+      align: center
     animation:
       enabled: true
       duration: 300
@@ -26,7 +24,7 @@ bars:
       windows_app_bar: true
     dimensions:
       width: 100%
-      height: 32
+      height: 34
     padding:
       top: 4
       left: 4
@@ -34,38 +32,38 @@ bars:
       right: 4
     widgets:
       left:
-      - win_button
-      - home
-      - quick_launch
-      - komorebi_workspaces
-      - komorebi_active_layout
-      - active_window
+        - home
+        - quick_launch
+        - active_window
       center:
-      - clock
+        - clock
       right:
-      - media
-      - systray
-      - taskbar
-      - open_meteo
-      - microphone
-      - volume
-      - bin
-      - notifications
-      - power_menu
+        - media
+        - systray
+        - cpu
+        - memory
+        - github
+        - open_meteo
+        - bluetooth
+        - microphone
+        - volume
+        - notifications
+        - bin
+        - power_menu
 widgets:
   home:
     type: yasb.home.HomeWidget
     options:
-      label: "<span>\uE8A9</span>"
+      label: <span></span>
       menu_list:
-      - title: User Home
-        path: '~'
-      - title: Download
-        path: ~\Downloads
-      - title: Documents
-        path: ~\Documents
-      - title: Pictures
-        path: ~\Pictures
+        - title: User Home
+          path: '~'
+        - title: Download
+          path: ~\Downloads
+        - title: Documents
+          path: ~\Documents
+        - title: Pictures
+          path: ~\Pictures
       system_menu: true
       power_menu: true
       blur: true
@@ -77,17 +75,17 @@ widgets:
   clock:
     type: yasb.clock.ClockWidget
     options:
-      label: '{%H:%M  %A %d %b}'
-      label_alt: '{%H:%M}<span>{alarm}</span>'
+      label: '{%H:%M%p | %A %d %b %Y}<span>{alarm}</span>'
+      label_alt: '{%a, %d %b %H:%M}'
       timezones: []
       calendar:
         blur: true
         round_corners: true
         alignment: center
         direction: down
-        extended: false
+        extended: true
         show_years: true
-        show_holidays: false
+        show_holidays: true
         show_week_numbers: true
       callbacks:
         on_left: toggle_calendar
@@ -96,15 +94,15 @@ widgets:
   volume:
     type: yasb.volume.VolumeWidget
     options:
-      label: <span>{icon}</span>
-      label_alt: <span>{icon}</span>{level}
+      label: '<span>{icon}</span>'
+      label_alt: '<span>{icon}</span>{level}'
       tooltip: true
-      volume_icons:
-      - "\uE74F"
-      - "\uE992"
-      - "\uE993"
-      - "\uE994"
-      - "\uE995"
+      icons:
+        "muted": "\ueee8" # Icon for muted
+        "10": "\uf026"  # Icon for 0-10% volume
+        "30": "\uf027"  # Icon for 11-30% volume
+        "60": "\uf027"  # Icon for 31-60% volume
+        "100": "\uf028"
       callbacks:
         on_left: toggle_volume_menu
         on_right: toggle_mute
@@ -120,12 +118,12 @@ widgets:
         show_app_icons: true
         show_apps_expanded: false
         app_icons:
-          toggle_down: "\uE972"
-          toggle_up: "\uE971"
+          toggle_down: 
+          toggle_up: 
   notifications:
     type: yasb.notifications.NotificationsWidget
     options:
-      label: "<span>\uF2A5</span>"
+      label: <span></span>
       label_alt: '{count} notifications'
       hide_empty: true
       tooltip: false
@@ -136,7 +134,7 @@ widgets:
   power_menu:
     type: yasb.power_menu.PowerMenuWidget
     options:
-      label: "<span>\uE77b</span>"
+      label: <span></span>
       uptime: true
       show_user: true
       menu_style: popup
@@ -150,74 +148,30 @@ widgets:
       profile_image_size: 64
       buttons:
         lock:
-        - "\uDB80\uDF41"
-        - Lock
+          - "\U000F0341"
+          - Lock
         signout:
-        - "\uDB80\uDF43"
-        - Sign out
+          - "\U000F0343"
+          - Sign out
         sleep:
-        - "\uDB82\uDD04"
-        - Sleep
+          - "\U000F0904"
+          - Sleep
         hibernate:
-        - "\uDB82\uDD01"
-        - Hibernate
+          - "\U000F0901"
+          - Hibernate
         restart:
-        - "\uDB81\uDC53"
-        - Restart
+          - "\U000F0453"
+          - Restart
         shutdown:
-        - "\uDB82\uDD06"
-        - Shut Down
+          - "\U000F0906"
+          - Shut Down
         cancel:
-        - ''
-        - Cancel
-  komorebi_workspaces:
-      type: "komorebi.workspaces.WorkspaceWidget"
-      options:
-          label_offline: "\u26a1 Offline"
-          label_workspace_btn: "\udb81\udc3d"
-          label_workspace_active_btn: "\udb81\udc3e"
-          label_workspace_populated_btn: "\udb81\udc3e"
-          label_default_name: "{index}"
-          label_zero_index: false
-          hide_empty_workspaces: false
-          hide_if_offline: false
-          container_padding: 
-            top: 0
-            left: 8
-            bottom: 0
-            right: 8
-  komorebi_active_layout:
-      type: "komorebi.active_layout.ActiveLayoutWidget"
-      options:
-        hide_if_offline: true
-        label: "{icon}"
-        layouts: ['bsp', 'columns', 'rows', 'grid', 'vertical_stack', 'horizontal_stack', 'ultrawide_vertical_stack','right_main_vertical_stack']
-        layout_icons:
-          bsp: "BSP"
-          columns: "COLS"
-          rows: "ROWS"
-          grid: "GRID"
-          vertical_stack: "V-STACK"
-          horizontal_stack: "H-STACK"
-          ultrawide_vertical_stack: "W-STACK"
-          right_main_vertical_stack: "RMV-STACK"
-          monocle: "MONOCLE"
-          maximised: "MAX"
-          floating: "FLOATING"
-          paused: "PAUSED"
-        callbacks:
-          on_left: 'next_layout'
-          on_middle: 'toggle_monocle'
-          on_right: 'prev_layout'
-        container_padding: 
-          top: 0
-          left: 8
-          bottom: 0
-          right: 8
+          - ''
+          - Cancel
   cpu:
     type: yasb.cpu.CpuWidget
     options:
-      label: "<span>\uEEA1</span> {info[percent][total]}%"
+      label: '<span></span> {info[percent][total]}%'
       label_alt: '{info[freq][current]} MHz'
       update_interval: 2000
       hide_decimal: true
@@ -234,8 +188,8 @@ widgets:
   memory:
     type: yasb.memory.MemoryWidget
     options:
-      label: "<span>\uE9D9</span> {virtual_mem_free}"
-      label_alt: "<span>\uEFC5</span> VIRT: {virtual_mem_percent}% SWAP: {swap_mem_percent}%"
+      label: '<span></span> {virtual_mem_free}'
+      label_alt: '<span></span> VIRT: {virtual_mem_percent}% SWAP: {swap_mem_percent}%'
       update_interval: 5000
       hide_decimal: true
       callbacks:
@@ -251,7 +205,7 @@ widgets:
   quick_launch:
     type: yasb.quick_launch.QuickLaunchWidget
     options:
-      label: "<span>\uE71E</span>"
+      label: <span></span>
       search_placeholder: Search applications...
       max_results: 30
       show_icons: true
@@ -276,26 +230,28 @@ widgets:
       callbacks:
         on_left: toggle_quick_launch
       keybindings:
-      - keys: alt+space
-        action: toggle_quick_launch
-        screen: primary
+        - keys: alt+space
+          action: toggle_quick_launch
+          screen: primary
   active_window:
     type: yasb.active_window.ActiveWindowWidget
     options:
       label: '{win[title]}'
-      label_alt: '[class_name=''{win[class_name]}'' exe=''{win[process][name]}'' hwnd={win[hwnd]}]'
+      label_alt: >-
+        [class_name='{win[class_name]}' exe='{win[process][name]}'
+        hwnd={win[hwnd]}]
       label_no_window: ''
       label_icon: true
       label_icon_size: 16
       max_length: 32
-      max_length_ellipsis: '...'
+      max_length_ellipsis: ...
       monitor_exclusive: false
   systray:
     type: yasb.systray.SystrayWidget
     options:
       class_name: systray
-      label_collapsed: "\uE972"
-      label_expanded: "\uE971"
+      label_collapsed: 
+      label_expanded: 
       label_position: right
       pin_click_modifier: ctrl
       show_unpinned: false
@@ -317,7 +273,7 @@ widgets:
   open_meteo:
     type: yasb.open_meteo.OpenMeteoWidget
     options:
-      label: "<span>\uE706</span>{temp}"
+      label: '<span></span>{temp}'
       label_alt: '{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}'
       tooltip: true
       update_interval: 600
@@ -328,8 +284,8 @@ widgets:
         on_middle: do_nothing
         on_right: toggle_label
       icons:
-        sunnyDay: "\uE706"
-        clearNight: "\uEC46"
+        sunnyDay: 
+        clearNight: 
       weather_card:
         blur: true
         alignment: right
@@ -350,18 +306,51 @@ widgets:
           enabled: true
           snow_overrides_rain: true
           temp_line_animation_style: both
-          rain_effect_intensity: 1.0
-          snow_effect_intensity: 1.0
+          rain_effect_intensity: 1
+          snow_effect_intensity: 1
           scale_with_chance: true
+  github:
+    type: yasb.github.GithubWidget
+    options:
+      label: <span></span>
+      label_alt: 'Notifications {data}'
+      max_notification: 50
+      notification_dot:
+        enabled: true
+        corner: top_right
+        color: '#ef4747'
+        margin:
+          - 0
+          - 3
+      only_unread: false
+      show_comment_count: true
+      max_field_size: 54
+      update_interval: 300
+      icons:
+        comment: 
+      menu:
+        blur: true
+        round_corners: true
+        round_corners_type: normal
+        border_color: System
+        alignment: center
+        direction: down
+        show_categories: true
+        categories_order:
+          - Issue
+          - PullRequest
+          - CheckSuite
+          - Release
+          - Discussion
   microphone:
     type: yasb.microphone.MicrophoneWidget
     options:
-      label: <span>{icon}</span>
-      label_alt: <span>{icon}</span> {level}
+      label: '<span>{icon}</span>'
+      label_alt: '<span>{icon}</span> {level}'
       mute_text: mute
       icons:
-        normal: "\uEC71"
-        muted: "\uE720"
+        normal: 
+        muted: 
       mic_menu:
         blur: true
         round_corners: true
@@ -390,15 +379,15 @@ widgets:
       show_thumbnail: true
       controls_only: false
       controls_left: true
-      controls_hide: false
+      controls_hide: true
       thumbnail_alpha: 100
       thumbnail_padding: 10
       thumbnail_edge_fade: true
       icons:
-        prev_track: "\uE892"
-        next_track: "\uE893"
-        play: "\uE768"
-        pause: "\uE769"
+        prev_track: 
+        next_track: 
+        play: 
+        pause: 
       media_menu:
         blur: true
         round_corners: true
@@ -408,56 +397,34 @@ widgets:
         direction: down
         thumbnail_corner_radius: 8
         thumbnail_size: 120
-        max_title_size: 80
+        max_title_size: 60
         max_artist_size: 20
         show_volume_slider: true
       scrolling_label:
         enabled: true
-        style: left
+        style: bounce
         update_interval_ms: 40
   bin:
-    type: "yasb.recycle_bin.RecycleBinWidget"
+    type: yasb.recycle_bin.RecycleBinWidget
     options:
-      label: "<span>{icon}</span> {items_size}"
-      label_alt: "Items {items_count}, Total size ({items_size})"
+      label: '<span>{icon}</span> {items_size}'
+      label_alt: 'Items {items_count}, Total size ({items_size})'
       icons:
-        bin_empty: "\udb82\ude7a"
-        bin_filled: "\udb82\ude79"
+        bin_empty: "\U000F0A7A"
+        bin_filled: "\U000F0A79"
       callbacks:
-        on_left: "open_bin"
-        on_right: "empty_bin"
-        on_middle: "toggle_label"
+        on_left: open_bin
+        on_right: empty_bin
+        on_middle: toggle_label
       show_confirmation: false
-  taskbar:
-    type: "yasb.taskbar.TaskbarWidget"
+  bluetooth:
+    type: "yasb.bluetooth.BluetoothWidget"
     options:
-      icon_size: 16
-      tooltip: true
-      show_only_visible: false
-      strict_filtering: true
-      monitor_exclusive: false
-      animation:
-        enabled: true
-      preview:
-        enabled: true
-        width: 240
-        delay: 400
-        padding: 8
-        margin: 8
-      title_label:
-        enabled: false
-        show: "always"
-        min_length: 5
-        max_length: 10
-      ignore_apps:
-        processes: []
-        titles: []
-        classes: []
-  win_button:
-    type: "yasb.custom.CustomWidget"
-    options:
-      label: "\ue62a"
-      label_alt: "\ue62a"
-      class_name: "win-button-widget"
-      callbacks:
-        on_left: "exec start_menu"
+      label: "<span>{icon}</span> {device_count}"
+      label_alt: "<span>{icon}</span> {device_name}"
+    callbacks:
+      on_left: "toggle_menu"
+      on_right: "toggle_label"
+    menu_config:
+      blur: true
+      alignment: "center"

@@ -1,9 +1,9 @@
 /* Root Variables */
 :root {
-    --yasb-bar-bg: rgba(36, 36, 36, 0.35);
+    --yasb-bar-bg: rgba(36, 36, 36, 0.70);
     --yasb-surface-alt: rgb(61, 61, 61);
-    --yasb-bar-border: #00CC6A;
-    --yasb-popup-bg: rgba(36, 36, 36, 0.50);
+    --yasb-bar-border: #303030;
+    --yasb-popup-bg: rgba(36, 36, 36, 0.70);
     --yasb-dialog-bg: rgb(43, 43, 43);
     --yasb-dialog-surface: rgb(32, 32, 32);
     --yasb-white-alpha-03: rgba(255, 255, 255, 0.03);
@@ -31,37 +31,6 @@
     --icons-font: "Segoe Fluent Icons";
     --icons-font-fallback: "JetBrainsMono NFP", "JetBrainsMono Nerd Font Propo";
     --system-font: "Segoe UI Variable", "Segoe UI";
-	--rosewater: #cfc9c2;
-    --flamingo: #e0af68;
-    --pink: #cfc9c2;
-    --mauve: #cfc9c2;
-    --red: #f7768e;
-    --maroon: #f7768e;
-    --peach: #e0af68;
-    --peachedit: #cfc9c2;
-    --peachedit2: #e0af68;
-    --yellow: #e0af68;
-    --green: #9ece6a;
-    --teal: #73daca;
-    --sky: #7dcfff;
-    --sapphire: #7aa2f7;
-    --blue: #7aa2f7;
-    --lavender: #c0caf5;
-    --text: #ceb79a;
-    --subtext1: #565f89;
-    --subtext0: #343B58;
-    --overlay2: #9399b2;
-    --overlay1: #7f849c;
-    --overlay0: #6c7086;
-    --surface2: #24283b;
-    --surface1: #1a1b26;
-    --surface1: #1a1b26;
-    --base: #1a1b26;
-    --winbutton: #9aa5ce;
-    --icon: #e0af68;
-    --basetransparent: rgba(30, 30, 46, 0.6);
-    --mantle: rgba(24, 24, 37, 1);
-    --crust: rgba(17, 17, 27, 1);
 }
 
 /* Global Defaults */
@@ -75,7 +44,7 @@
 /* Bar */
 .yasb-bar {
     background-color: var(--yasb-bar-bg);
-    padding: 0px 12px;
+    padding: 0px 12px
 }
 
 /* Tooltip */
@@ -171,6 +140,7 @@
     padding: 0px 6px;
     margin: 4px 0;
     border-radius: 4px;
+    transition: background-color 0.1s 
 }
 
 .widget .icon {
@@ -488,30 +458,35 @@
 }
 
 /* Volume */
-.volume-widget:hover {
-    background-color: var(--yasb-white-alpha-08);
+.volume-widget .icon {
+	font-family: JetBrainsMono NFP;
+	margin:1px 2px 0 0;
 }
 .audio-menu {
-    background-color: var(--yasb-popup-bg);
+    background-color:rgba(17, 17, 27, 0.4); 
     min-width: 300px;
 }
+/* System volume */
 .audio-menu .system-volume-container .volume-slider {
     border: none;
 }
+/* Device list styles */
 .audio-menu .audio-container .device {
-    background-color: transparent;
+    background-color:transparent;
     border: none;
-    padding: 6px 8px 6px 4px;
+    padding:6px 8px 6px 4px;
     margin: 2px 0;
     font-size: 12px;
     border-radius: 4px;
 }
 .audio-menu .audio-container .device.selected {
-    background-color: var(--yasb-white-alpha-08);
+    background-color: rgba(255, 255, 255, 0.085);
+   
 }
 .audio-menu .audio-container .device:hover {
-    background-color: var(--yasb-white-alpha-06);
+    background-color: rgba(255, 255, 255, 0.06);
 }
+/* Toggle button for application volumes (if is enabled) */
 .audio-menu .toggle-apps {
     background-color: transparent;
     border: none;
@@ -520,19 +495,20 @@
     min-height: 24px;
     min-width: 24px;
     border-radius: 4px;
-    font-family: var(--icons-font);
 }
 .audio-menu .toggle-apps.expanded {
-    background-color: var(--yasb-white-alpha-10);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 .audio-menu .toggle-apps:hover {
-    background-color: var(--yasb-white-alpha-15);
+    background-color: rgba(255, 255, 255, 0.15);
+    
 }
+/* Container for application volumes (if is enabled) */
 .audio-menu .apps-container {
     padding: 8px;
-    margin-top: 20px;
+    margin-top:20px;
     border-radius: 8px;
-    background-color: var(--yasb-white-alpha-06);
+    background-color:rgba(255, 255, 255, 0.062)
 }
 .audio-menu .apps-container .app-volume .app-icon-container {
     min-width: 40px;
@@ -543,33 +519,7 @@
     margin-right: 8px;
 }
 .audio-menu .apps-container .app-volume .app-icon-container:hover {
-    background-color: var(--yasb-white-alpha-10);
-}
-/* Komorebi Workspace */
-.komorebi-workspaces {
-    background-color: #221f2e;
-}
-.komorebi-workspaces .offline-status {
-    color: #627199;
-    font-size: 12px;
-    padding: 0 4px;
-    font-weight: 600;
-}
-.komorebi-workspaces .ws-btn {
-    border: none;
-    background-color: #9cd1dd;
-    margin: 0px 4px;
-    padding: 0;
-    color: rgba(0, 0, 0, 0);
-    border-radius: 5px;
-    height: 10px;
-    width: 10px;
-}
-.komorebi-workspaces .ws-btn:hover {
-    background-color: #91b2e7;
-}
-.komorebi-workspaces .ws-btn.populated {
-    background-color: #ea7094;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 /* CPU */
 .cpu-widget:hover {
@@ -1120,6 +1070,137 @@
 .open-meteo-card .search-results::item:hover {
     background-color: var(--yasb-white-alpha-05);
 }
+/* GitHub */
+.github-widget .icon {
+    font-family: var(--icons-font-fallback);
+}
+.github-widget:hover {
+    background-color: var(--yasb-white-alpha-08);
+}
+.github-menu {
+    background-color: var(--yasb-popup-bg);
+    height: 700px;
+    min-height: 0;
+    min-width: 500px;
+}
+.github-menu .header {
+    font-size: 18px;
+    font-weight: 400;
+    font-family: var(--system-font);
+    padding: 12px 0 8px 12px;
+    color: white;
+}
+.github-menu .footer {
+    font-size: 12px;
+    padding: 8px 8px 8px 8px;
+}
+.github-menu .footer .label {
+    color: #9399b2;
+    font-family: var(--system-font);
+}
+.github-menu .footer .label:hover {
+    color: #b5b9c7;
+}
+.github-menu .contents {
+    background-color: transparent;
+}
+.github-menu .contents .section-header {
+    font-family: var(--system-font);
+    font-size: 16px;
+    margin: 16px 16px 8px 16px;
+    color: #dbe0f1;
+}
+.github-menu .contents .section {
+    margin: 0 12px 0 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--yasb-white-alpha-10);
+    border-radius: 14px;
+}
+.github-menu .contents .item {
+    padding: 10px 0;
+}
+.github-menu .contents .item .comment-count {
+    font-family: var(--system-font);
+    padding-right: 12px;
+    font-weight: 600;
+    color: #747d86;
+}
+.github-menu .contents .item .comment-icon {
+    font-size: 14px;
+    padding-top: 4px;
+    padding-right: 6px;
+    color: #747d86;
+    font-family: var(--icons-font);
+}
+.github-menu .contents .item.first {
+    border-top: none;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+.github-menu .contents .item.last {
+    border-bottom: none;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+.github-menu .contents .item:hover {
+    background-color: var(--yasb-white-alpha-03);
+}
+.github-menu .contents .item .title,
+.github-menu .contents .item .description {
+    color: #9aa0a5;
+    font-family: var(--system-font);
+}
+.github-menu .contents .item .title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 1px;
+}
+.github-menu .contents .item .description {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 1px;
+    margin-left: 1px;
+    color: #878c91;
+}
+.github-menu .contents .item.new .title,
+.github-menu .contents .item.new .description {
+    color: #ffffff;
+}
+.github-menu .contents .item .icon {
+    font-size: 18px;
+    color: #848992;
+    min-width: 36px;
+    max-width: 36px;
+    padding-left: 8px;
+    font-family: var(--icons-font-fallback);
+}
+.github-menu .contents .item .icon.issue {
+    color: #3fb950;
+}
+.github-menu .contents .item .icon.issue.closed {
+    color: #ab7df8;
+}
+.github-menu .contents .item .icon.pullrequest {
+    color: #3fb950;
+}
+.github-menu .contents .item .icon.pullrequest.merged {
+    color: #ab7df8;
+}
+.github-menu .contents .item .icon.pullrequest.draft {
+    color: #848992;
+}
+.github-menu .contents .item .icon.discussion {
+    color: #848992;
+}
+.github-menu .contents .item .icon.discussion.answered {
+    color: #3fb950;
+}
+.github-menu .contents .item .icon.release {
+    color: #848992;
+}
+.github-menu .contents .item .icon.checksuite {
+    color: #f38ba8;
+}
 /* Microphone */
 .microphone-widget:hover {
     background-color: var(--yasb-white-alpha-08);
@@ -1315,52 +1396,200 @@
 .recycle-bin-widget .label {
     padding-right: 5px;
 }
-
-.taskbar-widget .app-container {
-    margin: 4px 2px;
-    border-radius: 4px;
-    padding: 0 4px;
+.bluetooth-widget .icon.bt-off,
+.bluetooth-widget .label.bt-off {
+    color: #888;
 }
-.taskbar-widget .app-container.flashing {
-    background-color: rgba(255, 106, 106, 0.63);
+.bluetooth-widget .icon.bt-on,
+.bluetooth-widget .label.bt-on {
+    color: #4cc2ff;
 }
-.taskbar-widget .app-container:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+.bluetooth-widget .icon.bt-connected,
+.bluetooth-widget .label.bt-connected {
+    color: #47fca2;
 }
-.taskbar-widget .app-container .app-title {
-    padding-left: 4px;
+.bluetooth-menu {
+    background: rgba(28, 28, 28, 0.6);
+    min-width: 360px;
+    min-height: 480px;
 }
-/* Taskbar preview popup is very limited in styling options, do not use margins/paddings here */
-.taskbar-preview {
-    border-radius: 8px; 
-    background-color: var(--yasb-white-alpha-10); 
+.bluetooth-menu .header {
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-.taskbar-preview.flashing { 
-    background-color: #7f434a;
-}
-.taskbar-preview .header {
-    padding-bottom: 12px;
-    padding-top: 4px;
-}
-.taskbar-preview .header .title {
-    color: #d6d6d6;
-    font-family: "Segoe UI";
+.bluetooth-menu .header .title {
+    font-size: 14px;
     font-weight: 600;
-    font-size: 13px;
+    color: white;
 }
-.taskbar-preview .close-button {
-    color: #999;
-    font-size: 20px;
+.bluetooth-menu .header .power-button {
+    background-color: rgba(255, 255, 255, 0.12);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 14px;
+    margin-left: 8px;
+}
+.bluetooth-menu .header .power-button:checked {
+    background-color: #4cc2ff;
+    color: #000;
+}
+.bluetooth-menu .progress-bar {
+    min-height: 2px;
+    max-height: 2px;
+    color: #4cc2ff;
+}
+.bluetooth-menu .bluetooth-list {
+    background-color: transparent;
+}
+.bluetooth-menu .section {
+    background-color: transparent
+}
+.bluetooth-menu .section-title {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 12px 4px;
+    color: rgba(255, 255, 255, 0.6);
+}
+.bluetooth-menu .error-message {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 0;
+    background-color: #92242d;
+    color: #e7bfc2;
+}
+.bluetooth-menu .bluetooth-item {
+    min-height: 44px;
+    padding: 6px 12px;
+    margin: 2px 4px;
+    border-radius: 6px;
+}
+.bluetooth-menu .bluetooth-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.bluetooth-menu .bluetooth-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+}
+.bluetooth-menu .bluetooth-item .icon {
+    font-family: 'Segoe Fluent Icons';
+    font-size: 18px;
+    margin-right: 12px;
+    min-width: 28px;
+    font-weight: 400;
+}
+.bluetooth-menu .bluetooth-item .name {
+    font-size: 14px;
+    font-weight: 600;
+}
+.bluetooth-menu .bluetooth-item .status {
+    font-size: 12px;
+    color: #47fca2;
+    font-weight: 600;
+}
+.bluetooth-menu .bluetooth-item .battery {
+    font-size: 13px;
+    font-weight: 600;
+    padding-right: 6px;
+}
+.bluetooth-menu .bluetooth-item .battery-icon {
+    font-size: 18px;
+    font-weight: 400;
+	color: #47fca2;
+    font-family: 'Segoe Fluent Icons';
+}
+.bluetooth-menu .bluetooth-item .controls-container {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.bluetooth-menu .bluetooth-item .connect {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+}
+.bluetooth-menu .bluetooth-item .connect:hover {
+    background-color: rgba(255, 255, 255, 0.22);
+}
+.bluetooth-menu .footer {
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.bluetooth-menu .footer .settings-button {
     background-color: transparent;
     border: none;
-    min-width: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.bluetooth-menu .footer .scan-icon {
+    font-family: 'Segoe Fluent Icons';
+    background-color: transparent;
+    border: none;
+    font-weight: 400;
+    min-width: 28px;
+    min-height: 28px;
+    color: #fff;
     border-radius: 4px;
-    min-height: 20px;
 }
-.taskbar-preview .close-button:hover {
-    color: rgb(255, 255, 255);
-    background-color: rgb(226, 0, 0);
+.bluetooth-menu .footer .scan-icon:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
-.win-button-widget .label {
-	font: var(--icons-font-fallback);
+.glazewm-tiling-direction {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.glazewm-tiling-direction .btn {
+    font-size: 18px;
+    width: 14px;
+    padding: 0 4px 0 4px;
+    color: #CDD6F4;
+    border: none;
+}
+
+.glazewm-tiling-direction .btn:hover {
+    background-color: #727272;
+}
+.glazewm-workspaces {
+    margin: 0;
+}
+
+.glazewm-workspaces .ws-btn {
+    font-size: 14px;
+    background-color: transparent;
+    border: none;
+    padding: 0px 4px 0px 4px;
+    margin: 0 2px 0 2px;
+    color: #CDD6F4;
+}
+
+.glazewm-workspaces .ws-btn.active_populated {
+    color: #C2DAF7;
+    background-color: #727272;
+}
+.glazewm-workspaces .ws-btn.active_empty {
+    color: #7D8B9D;
+    background-color: #727272;
+}
+
+.glazewm-workspaces .ws-btn.populated {
+    color: #C2DAF7;
+}
+
+.glazewm-workspaces .ws-btn.empty {
+    color: #7D8B9D;
+}
+
+.glazewm-workspaces .ws-btn:hover,
+.glazewm-workspaces .ws-btn.populated:hover,
+.glazewm-workspaces .ws-btn.empty:hover {
+    background-color: #727272;
 }
