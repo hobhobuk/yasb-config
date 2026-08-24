@@ -1,9 +1,9 @@
 /* Root Variables */
 :root {
-    --yasb-bar-bg: rgba(36, 36, 36, 0.70);
+    --yasb-bar-bg: rgba(36, 36, 36, 0.60);
     --yasb-surface-alt: rgb(61, 61, 61);
     --yasb-bar-border: #303030;
-    --yasb-popup-bg: rgba(36, 36, 36, 0.70);
+    --yasb-popup-bg: rgba(36, 36, 36, 0.65);
     --yasb-dialog-bg: rgb(43, 43, 43);
     --yasb-dialog-surface: rgb(32, 32, 32);
     --yasb-white-alpha-03: rgba(255, 255, 255, 0.03);
@@ -162,6 +162,15 @@
 .home-menu {
     background-color: var(--yasb-popup-bg);
 }
+.home-widget .label {
+    font-size: 17px;
+	padding: 0px 1px;
+	padding-bottom: 1px;
+    font-weight: 400;
+    color: var(--yasb-icon-fg);
+    font-family: var(--icons-font);
+}
+
 .home-menu .menu-item {
     color: var(--yasb-fg);
     padding: 8px 48px 8px 16px;
@@ -371,6 +380,12 @@
 /* Power Menu */
 .power-menu-widget:hover {
     background-color: var(--yasb-white-alpha-08);
+}
+.power-menu-widget .label { 
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--yasb-icon-fg);
+    font-family: var(--icons-font);
 }
 .power-menu-compact {
     min-width: 260px;
@@ -671,9 +686,25 @@
     font-family: var(--system-font);
     padding: 0 4px 12px 4px;
 }
+.notification-widget .label {
+	font-size: 17px;
+	padding: 0px 1px;
+	padding-bottom: 1px;
+    font-weight: 400;
+    color: var(--yasb-icon-fg);
+    font-family: var(--icons-font);
+}
 /* Quick Launch */
 .quick-launch-widget:hover {
     background-color: var(--yasb-white-alpha-08);
+}
+.quick-launch-widget .label {
+	font-size: 17px;
+	padding: 0px 2px;
+	padding-bottom: 1px;
+    font-weight: 400;
+    color: var(--yasb-icon-fg);
+    font-family: var(--icons-font);
 }
 .quick-launch-popup .container {
     background-color: var(--yasb-popup-bg);
@@ -1541,55 +1572,31 @@
 .bluetooth-menu .footer .scan-icon:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
-.glazewm-tiling-direction {
-    background-color: transparent;
-    padding: 0;
-    margin: 0;
+.update-check-widget {
+    padding: 0 4px;
 }
-
-.glazewm-tiling-direction .btn {
-    font-size: 18px;
-    width: 14px;
-    padding: 0 4px 0 4px;
-    color: #CDD6F4;
-    border: none;
-}
-
-.glazewm-tiling-direction .btn:hover {
-    background-color: #727272;
-}
-.glazewm-workspaces {
-    margin: 0;
-}
-
-.glazewm-workspaces .ws-btn {
+.update-check-widget .icon {
+	font-family: JetBrainsMono NFP;
     font-size: 14px;
-    background-color: transparent;
-    border: none;
-    padding: 0px 4px 0px 4px;
-    margin: 0 2px 0 2px;
-    color: #CDD6F4;
 }
-
-.glazewm-workspaces .ws-btn.active_populated {
-    color: #C2DAF7;
-    background-color: #727272;
+ 
+.update-check-widget .widget-container.paired-left {
+    margin-left: 2px;
 }
-.glazewm-workspaces .ws-btn.active_empty {
-    color: #7D8B9D;
-    background-color: #727272;
+.update-check-widget .widget-container.paired-right {
+    margin-right: 2px;
 }
-
-.glazewm-workspaces .ws-btn.populated {
-    color: #C2DAF7;
+.update-check-widget .widget-container.winget .icon,
+.update-check-widget .widget-container.scoop .icon,
+.update-check-widget .widget-container.windows .icon {
+    color: #ffffff;
+    margin: 0 1px 0 6px;
 }
-
-.glazewm-workspaces .ws-btn.empty {
-    color: #7D8B9D;
-}
-
-.glazewm-workspaces .ws-btn:hover,
-.glazewm-workspaces .ws-btn.populated:hover,
-.glazewm-workspaces .ws-btn.empty:hover {
-    background-color: #727272;
+.update-check-widget .widget-container.winget .label,
+.update-check-widget .widget-container.scoop .label,
+.update-check-widget .widget-container.windows .label {
+    margin: 0 6px 0 4px;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
 }

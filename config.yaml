@@ -1,6 +1,10 @@
 watch_stylesheet: true
 watch_config: true
 debug: false
+komorebi:
+  start_command: "komorebic start --whkd"
+  stop_command: "komorebic stop --whkd"
+  reload_command: "komorebic stop --whkd && komorebic start --whkd "
 update_check: true
 bars:
   primary-bar:
@@ -32,7 +36,6 @@ bars:
       right: 4
     widgets:
       left:
-        - home
         - quick_launch
         - active_window
       center:
@@ -43,6 +46,7 @@ bars:
         - cpu
         - memory
         - github
+        - update_check
         - open_meteo
         - bluetooth
         - microphone
@@ -51,27 +55,6 @@ bars:
         - bin
         - power_menu
 widgets:
-  home:
-    type: yasb.home.HomeWidget
-    options:
-      label: <span></span>
-      menu_list:
-        - title: User Home
-          path: '~'
-        - title: Download
-          path: ~\Downloads
-        - title: Documents
-          path: ~\Documents
-        - title: Pictures
-          path: ~\Pictures
-      system_menu: true
-      power_menu: true
-      blur: true
-      round_corners: true
-      round_corners_type: normal
-      border_color: System
-      alignment: left
-      offset_left: -12
   clock:
     type: yasb.clock.ClockWidget
     options:
@@ -118,12 +101,12 @@ widgets:
         show_app_icons: true
         show_apps_expanded: false
         app_icons:
-          toggle_down: 
-          toggle_up: 
+          toggle_down: "\ueb71"
+          toggle_up: "\ueb6e"
   notifications:
     type: yasb.notifications.NotificationsWidget
     options:
-      label: <span></span>
+      label: "\udb83\udd59"
       label_alt: '{count} notifications'
       hide_empty: true
       tooltip: false
@@ -134,7 +117,7 @@ widgets:
   power_menu:
     type: yasb.power_menu.PowerMenuWidget
     options:
-      label: <span></span>
+      label: "\u23fb"
       uptime: true
       show_user: true
       menu_style: popup
@@ -205,7 +188,7 @@ widgets:
   quick_launch:
     type: yasb.quick_launch.QuickLaunchWidget
     options:
-      label: <span></span>
+      label: "\uea6d"
       search_placeholder: Search applications...
       max_results: 30
       show_icons: true
@@ -301,7 +284,7 @@ widgets:
         current_line_width: 1
         current_line_style: dot
         hourly_forecast_buttons:
-          enabled: false
+          enabled: true
         weather_animation:
           enabled: true
           snow_overrides_rain: true
@@ -327,7 +310,7 @@ widgets:
       max_field_size: 54
       update_interval: 300
       icons:
-        comment: 
+        comment: "\uea6b"
       menu:
         blur: true
         round_corners: true
@@ -349,8 +332,8 @@ widgets:
       label_alt: '<span>{icon}</span> {level}'
       mute_text: mute
       icons:
-        normal: 
-        muted: 
+        normal: "\uf130"
+        muted: "\uf131"
       mic_menu:
         blur: true
         round_corners: true
@@ -374,20 +357,20 @@ widgets:
         on_middle: do_nothing
         on_right: do_nothing
       max_field_size:
-        label: 20
+        label: 25
         label_alt: 20
       show_thumbnail: true
       controls_only: false
       controls_left: true
-      controls_hide: true
+      controls_hide: false
       thumbnail_alpha: 100
       thumbnail_padding: 10
       thumbnail_edge_fade: true
       icons:
-        prev_track: 
-        next_track: 
-        play: 
-        pause: 
+        prev_track: "\uf04a"
+        next_track: "\uf04e"
+        play: "\ueb2c"
+        pause: "\uf04c"
       media_menu:
         blur: true
         round_corners: true
@@ -395,10 +378,10 @@ widgets:
         border_color: system
         alignment: center
         direction: down
-        thumbnail_corner_radius: 8
+        thumbnail_corner_radius: 6
         thumbnail_size: 120
         max_title_size: 60
-        max_artist_size: 20
+        max_artist_size: 30
         show_volume_slider: true
       scrolling_label:
         enabled: true
@@ -428,3 +411,21 @@ widgets:
     menu_config:
       blur: true
       alignment: "center"
+  update_check:
+    type: "yasb.update_check.UpdateCheckWidget"
+    options:
+      windows_update:
+        enabled: true
+        label: "<span>\uf0ab</span> {count}"
+        interval: 1440
+        exclude: []
+      winget_update:
+        enabled: true
+        label: "<span>\uf0ab</span> {count}"
+        interval: 240
+        exclude: ["Microsoft.Edge"]
+      scoop_update:
+        enabled: true
+        label: "<span>\uf0ab</span> {count}"
+        interval: 240
+        exclude: []
