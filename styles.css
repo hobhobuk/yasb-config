@@ -1,10 +1,10 @@
 /* Root Variables */
 :root {
-    --yasb-bar-bg: rgba(36, 36, 36, 0.60);
-    --yasb-surface-alt: rgb(61, 61, 61);
-    --yasb-bar-border: #303030;
-    --yasb-popup-bg: rgba(36, 36, 36, 0.65);
-    --yasb-dialog-bg: rgb(43, 43, 43);
+    --yasb-bar-bg: #4a2c1abf;
+    --yasb-surface-alt: #7a4d33;
+    --yasb-bar-border: #5e3a24;
+    --yasb-popup-bg: #5e3a24;
+    --yasb-dialog-bg: #5e3a24;
     --yasb-dialog-surface: rgb(32, 32, 32);
     --yasb-white-alpha-03: rgba(255, 255, 255, 0.03);
     --yasb-white-alpha-04: rgba(255, 255, 255, 0.04);
@@ -20,13 +20,13 @@
     --yasb-white-alpha-70: rgba(255, 255, 255, 0.7);
     --yasb-white-alpha-80: rgba(255, 255, 255, 0.8);
     --yasb-white-alpha-85: rgba(255, 255, 255, 0.85);
-    --yasb-fg: rgba(255, 255, 255, 0.9);
-    --yasb-fg-muted: rgb(134, 134, 134);
-    --yasb-icon-fg: rgba(255, 255, 255, 0.9);
+    --yasb-fg: #dfd5cc;
+    --yasb-fg-muted: #f0ebe6;
+    --yasb-icon-fg: #dfd5cc;
     --yasb-tooltip-bg: rgba(31, 31, 31, 0.95);
     --yasb-tooltip-border: rgb(44, 44, 44);
-    --yasb-accent: #4cc2ff;
-    --yasb-accent-hover: #40ace2;
+    --yasb-accent: #f7630c;
+    --yasb-accent-hover: #ff7a2e;
     --yasb-accent-fg: #000000;
     --icons-font: "Segoe Fluent Icons";
     --icons-font-fallback: "JetBrainsMono NFP", "JetBrainsMono Nerd Font Propo";
@@ -1273,7 +1273,7 @@
     padding: 0px 8px;
 }
 .media-widget .btn {
-    color: #9498a8;
+    color: var(--yasb-fg);
     padding: 0 4px;
     margin: 0;
     font-family: 'Segoe Fluent Icons';
@@ -1304,7 +1304,7 @@
 .media-menu {
     min-width: 440px;
     max-width: 440px;
-    background-color: rgba(31, 39, 49, 0.5);
+    background-color: var(--yasb-bar-bg);
 }
 .media-menu .title,
 .media-menu .artist,
@@ -1316,14 +1316,14 @@
 }
 .media-menu .artist {
     font-size: 13px;
-    color: #6c7086;
+    color: var(--yasb-fg);
     margin-top: 0px;
 }
 .media-menu .source {
     font-size: 11px;
     color: #000;
     border-radius: 3px;
-    background-color: #4cc2ff;
+    background-color: #92de8a;
     padding: 2px 4px;
     font-weight: 600;
     font-family: var(--system-font);
@@ -1359,7 +1359,7 @@
 .media-menu .playback-time {
     font-size: 13px;
     font-family: var(--system-font);
-    color: #7f849c;
+    color: var(--yasb-fg);
     margin-top: 16px;
     min-width: 100px;
 }
